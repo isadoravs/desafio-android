@@ -7,7 +7,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry
-import com.picpay.desafio.android.view.users.ContactsActivity
+import com.picpay.desafio.android.view.users.UsersActivity
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -23,7 +23,7 @@ class ContactsActivityTest {
 
     @Test
     fun shouldDisplayTitle() {
-        launchActivity<ContactsActivity>().apply {
+        launchActivity<UsersActivity>().apply {
             val expectedTitle = context.getString(R.string.title)
 
             moveToState(Lifecycle.State.RESUMED)
@@ -45,7 +45,7 @@ class ContactsActivityTest {
 
         server.start(serverPort)
 
-        launchActivity<ContactsActivity>().apply {
+        launchActivity<UsersActivity>().apply {
             // TODO("validate if list displays items returned by server")
         }
 
