@@ -1,7 +1,6 @@
 package com.picpay.desafio.android.network
 
 import com.picpay.desafio.android.model.User
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 

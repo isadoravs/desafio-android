@@ -12,12 +12,12 @@ import com.picpay.desafio.android.R
 import com.picpay.desafio.android.view.users.adapters.UserListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ContactsActivity : AppCompatActivity(R.layout.activity_main) {
+class UsersActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var adapter: UserListAdapter
-    private val viewModel: ContactsViewModel by viewModel()
+    private val viewModel: UsersViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,26 +32,22 @@ class ContactsActivity : AppCompatActivity(R.layout.activity_main) {
 
         progressBar.visibility = View.VISIBLE
 
-        viewModel.fetchContacts()
-
         configureObservers()
     }
 
     private fun configureObservers() {
-
-        viewModel.contacts.observe(this, Observer {contacts ->
+        viewModel.contacts.observe(this, Observer { users ->
             progressBar.visibility = View.GONE
-            adapter.users = contacts
+            adapter.users = users
         })
 
-        viewModel.error.observe(this, Observer {_ ->
+        viewModel.error.observe(this, Observer {
             val message = getString(R.string.error)
 
             progressBar.visibility = View.GONE
             recyclerView.visibility = View.GONE
 
-            Toast.makeText(this@ContactsActivity, message, Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(this@UsersActivity, message, Toast.LENGTH_SHORT).show()
         })
     }
 

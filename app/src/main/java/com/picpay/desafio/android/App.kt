@@ -4,6 +4,7 @@ import android.app.Application
 import com.picpay.desafio.android.di.contactsModule
 import com.picpay.desafio.android.di.repositoryModule
 import com.picpay.desafio.android.di.retrofitModule
+import com.picpay.desafio.android.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,7 +15,7 @@ class App : Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            modules(listOf(retrofitModule, repositoryModule, contactsModule))
+            modules(listOf(retrofitModule, repositoryModule, viewModelModule))
         }
     }
 }
