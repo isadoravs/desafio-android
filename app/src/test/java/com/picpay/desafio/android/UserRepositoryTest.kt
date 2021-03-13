@@ -1,6 +1,6 @@
 package com.picpay.desafio.android
 
-import com.picpay.desafio.android.data.UserRepository
+import com.picpay.desafio.android.repository.user.UserRepository
 import com.picpay.desafio.android.mocks.PicPayServiceMock
 import com.picpay.desafio.android.mocks.expectedUsers
 import com.picpay.desafio.android.model.ResponseState

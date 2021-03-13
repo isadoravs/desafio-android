@@ -4,14 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.picpay.desafio.android.data.IUserRepository
+import com.picpay.desafio.android.repository.user.IUserRepository
 import com.picpay.desafio.android.model.ResponseState
 import com.picpay.desafio.android.model.User
-import com.picpay.desafio.android.network.PicPayService
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.junit.Rule
 
 class UsersViewModel(private val userRepository: IUserRepository, private val dispatcher: CoroutineDispatcher) : ViewModel() {
     private val _contacts = MutableLiveData<List<User>>()

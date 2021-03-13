@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-object PicPayApi {
+object PicPayServiceConfig {
     private const val url = "http://careers.picpay.com/tests/mobdev/"
 
     private val gson: Gson by lazy { GsonBuilder().create() }
@@ -33,14 +33,14 @@ object PicPayApi {
             } else {
                 request.newBuilder().header(
                     CACHE_CONTROL,
-                    "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
+                    "public, only-if-cached, max-stale=" + 60 * 60 * 24
                 ).build()
             }
             chain.proceed(request)
         }
         .build()
 
-    fun retrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun retrofit(okHttpClient: OkHttpClient, url: String = this.url): Retrofit = Retrofit.Builder()
         .baseUrl(url)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
@@ -58,7 +58,6 @@ object PicPayApi {
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
                 else -> false
             }
         } else {
